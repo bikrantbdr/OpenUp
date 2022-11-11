@@ -7,9 +7,9 @@ from django.forms import  ModelForm
 
 class Posts(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
-    content = models.CharField()
+    content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
-    support = models.models.IntegerField()
+    support = models.IntegerField()
 
 # Create your models here.
 class User(models.Model):
