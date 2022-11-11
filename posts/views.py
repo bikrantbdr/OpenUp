@@ -25,20 +25,25 @@ def login_page(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        temp = User.objects.filter_by(username = username)
-        if(password==temp.password):
-            redirect('posts/home.html')
-            
+        temp = User.objects.filter(username = username)
+        
+        if temp:
+            if(password==temp.password):
+                redirect('posts/home.html', temp)
+                
+
+            else:
+                messages.info(request, 'Password is incorrect')
 
         else:
-            messages.info(request, 'Username or password is incorrect')
+            messages.info(request, 'Username is incorrect')
 
     context = {}
     return render(request, 'posts/login.html', context)
 
-def home(request, user_id):
+def home(request, user):
     context = {
-        'user_id':user_id,
+        'anon_id':user.anon_id,
     }
     return render(request, 'posts/home.html', context)
 

@@ -7,7 +7,9 @@ from django.forms import  ModelForm
 
 class Posts(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
-    content = models.TextField()
+
+    content = models.TextField(max_length=1500)
+
     date_posted = models.DateTimeField(default=timezone.now)
     support = models.IntegerField()
 
@@ -22,6 +24,7 @@ class User(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length = 30)
     phone_number = models.IntegerField()
+    anon_id = id 
 
     def __str__(self):
         return self.username
