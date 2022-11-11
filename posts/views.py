@@ -21,22 +21,21 @@ def register(request):
         return render(request, 'posts/register.html', context)
 
 def login_page(request):
+
     if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        temp = User.objects.filter(username = username)
-        
-        if temp:
-            if(password==temp.password):
-                redirect('posts/home.html', temp)
+        Username = request.POST['username']
+        Password=request.POST['password']
+        user_detail = User.objects.all()
+        for user in user_detail:
+            
+            if user.username == Username and user.password == Password:
                 
+                #return render(request,'posts/home.html',{'user': user})
+                return render(request,'posts/home.html',{'user': user})
+                
+        # pop message wrong information message
+        return render(request,'login.html')
 
-            else:
-                messages.info(request, 'Password is incorrect')
-
-        else:
-            messages.info(request, 'Username is incorrect')
 
     context = {}
     return render(request, 'posts/login.html', context)
