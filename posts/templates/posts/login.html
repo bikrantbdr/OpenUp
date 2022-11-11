@@ -1,0 +1,18 @@
+{% extends 'posts/index.html' %}
+
+{% block content %}
+
+<form action={% url 'home' %} method="POST">
+{% csrf_token %}
+
+    <input type="text" name = "username">
+
+    <input type="password" name="password" id="" placeholder="Password">
+    
+    <input class="btn login_btn" type="submit" value="Login">
+
+</form>
+
+{{ form.errors }}
+
+{% endblock %}
