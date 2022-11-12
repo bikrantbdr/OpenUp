@@ -12,17 +12,22 @@ def index(request):
 
 def register(request):
     form = UserForm()
+    context = {} 
     if request.method == "POST":
+        username = request.POST['username']
+        #request.session['username'] = username
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
-        
-    else:
-        context = {'form':form} 
-        return render(request, 'posts/register.html', context)
+            print("yess")
+            return render(request, 'posts/questions.html', context)
+    
+    context = {'form':form} 
+    return render(request, 'posts/register.html', context)
 
-def login_page(request):
+
+
+def login(request):
 
     if request.method == "POST":
         Username = request.POST['username']
@@ -37,7 +42,7 @@ def login_page(request):
                 #set session:
                 request.session['username'] = user.username
                 user_post = Post.objects.all()
-                return render(request, 'posts/mainpage.html',{'user_post': user_post})
+                return render(request, 'posts/mainpage.html',{'user': user, 'user_post': user_post})
                 
                 
         # pop message wrong information message
@@ -45,25 +50,35 @@ def login_page(request):
 
 
     context = {}
-    return render(request, 'posts/login.html', context)
+    return render(request, 'posts/home.html', context)
 
 def home(request):
+    if request.method=="GET4":
+        ans11=request.GET['ans']
+        print(ans11)
+        username = request.session['username']
+
+        Disorder.objects.create(username= username, types= ans11 )    
+            #message pop up already registered
+            #return render(request,'register.html')
+        return render(request,'posts/home.html')
+
     
-    return render(request, 'posts/home.html')
+    else:
+        context = {} 
+        return render(request, 'posts/home.html', context)
+
+        
+
+
 
 def forgotpassword(request):
     
     return render(request, 'posts/forgotpassword.html')
 
 
-def register(request):
-    return render(request, 'posts/register.html')
-
-
-
-
 def makepost(request):
-    if request.method=="POST":
+    if request.method=="POST4":
         username = request.session['username']  
         #username="random"
         title = request.POST['title']
@@ -82,4 +97,11 @@ def makepost(request):
 
 
 
-
+def my_comment(request):
+    username = request.session['username']
+    user_post = Post.objects.all()
+    return render(request, 'posts/mainpage.html',{'user_post': user_post})
+  
+def questions(request):
+    print("hfudsih")
+    return render(request, 'posts/questions.html')

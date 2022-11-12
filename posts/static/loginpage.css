@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+*{
+    box-sizing: border-box;
+}
+.login-container{
+width: 50vw;
+box-shadow: 1px 4px 46px 10px rgba(0,0,0,0.14); 
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 50vh;
+  background-color: whitesmoke;
+}
+.username-form, .password-form{
+min-height: 3.5rem;
+border-radius: 10px;
+}
+.login-btn{
+    padding: 0,1rem;
+    margin: 20px 0 20px 10px;
+}
+.create-new{
+    margin: auto;
+}
+  .logo-moto{
+  font-size: large;
+  font-weight: bolder;
+  color:#34B8FF;
+    width: 70vw; 
+    margin-right: 4rem;
+    font-family: 'Rubik', sans-serif;
+
+  }
+  .moto{
+    margin-top: 15px;
+  }
+  .login-page-container{
+    display: flex;
+    margin-left: 4rem;
+  }
+
+  html, body {
+    height: 100%;
+}
+
+html {
+   display: table; 
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background: rgb(233, 233, 238);
+}
+
+ 

@@ -23,7 +23,8 @@ except ImportError:
 
 
 class Post(models.Model):
-    author = models.CharField(max_length=25, unique=True)
+    is_visible = models.BooleanField(default=False)
+    author = models.CharField(max_length=25)
     title = models.TextField(max_length=150)
     content = models.TextField(max_length=1500)
     date_posted = models.DateTimeField(default=timezone.now)
@@ -37,13 +38,25 @@ class User(models.Model):
     first_name = models.CharField(max_length=30)
     middle_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    bio = models.TextField(max_length=1500)
     address = models.CharField(max_length=30)
     age = models.IntegerField()
     username = models.CharField(max_length=25, unique=True)
     email = models.EmailField()
     password = models.CharField(max_length = 30)
     phone_number = models.IntegerField()
+    #disorder_json = models.JSONField(default= {'available':0})
+    
     anon_id = id 
+
+
+# Create your models here.
+class Disorder(models.Model):
+    username = models.CharField(max_length=25, unique=True)
+    types = models.TextField(max_length=1500)
+
+
+   
 
     def __str__(self):
         return self.username

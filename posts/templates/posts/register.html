@@ -12,6 +12,7 @@
   <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../static/register.css"> 
 	<title>Register</title>
 </head>
 <body>
@@ -20,39 +21,58 @@
 			<div class="card card-body">
 				<h1 class="text-centre mb-3"><i class="fa fa-user-plus"></i> Register</h1>
 
-{% extends 'posts/index.html' %}
+                
+                <form action={% url 'register' %} method="POST">
+                    
+                   
 
 {% block content %}
-
-<form action={% url 'login' %} method="POST">
-{% csrf_token %}
-
-    <p class="form-control">First name: {{ form.first_name }}</p>
-    <p class="form-control">Middle Name:{{ form.middle_name }}
-    <p class="form-control">Last Name:{{ form.last_name }}
-    <p class="form-control">Address :{{ form.address }}
-    <p class="form-control">Age:{{ form.age }}
+                    
+                    {% csrf_token %}
+<div class="form-group">
+    <div class="label-input">
+        <label for="name" class="label-text"> First Name:</label>{{ form.first_name }}<br>
+    </div>
+    <div class="label-input">
+    <label for="name" class="label-text"> Middle Name:</label>{{ form.middle_name }}<br>
+    </div>
+    <div class="label-input">
+    <label for="name" class="label-text"> Last Name:</label>{{ form.last_name }}<br>
+</div>
+<div class="label-input">
+    <label for="name" class="label-text"> Age</label>{{ form.age }}<br>
+</div>
+<div class="label-input">
+    <label for="name" class="label-text"> Address:</label>{{ form.address }}<br>
+</div>
+<div class="label-input">
+    <label for="name" class="label-text"> Phone Number:</label>{{ form.phone_number }}<br>
+</div>
+<div class="label-input">
+    <label for="name" class="label-text"> Email:</label>{{ form.email }}<br>
+</div>
+<div class="label-input">
+    <label for="name" class="label-text"> Username:</label>{{ form.username }}<br>
+</div>
+<div class = "label-input">
+    <label for="name" class = "label-text"> Bio: </label>{{ form.bio }}<br>
+</div>
+<div class="label-input">
+    <label for="name" class="label-text">Password:</label>{{ form.password }}<br>
+</div>
     
-    <p class="form-control">Phone Number:{{ form.phone_number }}
-    <p class="form-control">email:{{ form.email }}
-        <p class="form-control">username:{{ form.username }}
-            <p class="form-control">Password:{{ form.password }}
-    
-                <input  type="submit" value="Login" class="btn btn-primary btn-block mb-2">
-
+</div>
+<button type="submit" class="btn btn-danger btn-block mb-2">Register</button>
 </form>
-
 {{ form.errors }}
+
 <p >Have an account?<a href="./home.html" style="text-decoration: none;"
-    class="text-danger mt-4">login</a></p>
+class="text-danger mt-4">login</a></p>
 </div>
 </div>
 </div>
 
 </body>
 </html>
-
-
-
 
 {% endblock %}
