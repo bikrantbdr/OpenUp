@@ -195,15 +195,19 @@ h4 {
 .support-icon:hover{
     filter: invert(42%) sepia(90%) saturate(2013%) hue-rotate(163deg) brightness(98%) contrast(103%);
 }
-.save{
+/* .report{
     cursor: pointer;
     transform: scale(2);
     position: relative;
     top:1rem;
-}
-.save:hover{
+} */
+.report{
+  display:flex;
+  gap:0.3rem}
+.report:hover{
     color:blue
 }
+
 
 .comment-section{
   margin-top: 2rem;

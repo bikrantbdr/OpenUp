@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'daphne',
     'ChatServer.apps.ChatserverConfig',
     'posts.apps.PostsConfig',
+    'groupcall.apps.GroupcallConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

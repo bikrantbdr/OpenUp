@@ -33,7 +33,7 @@
                         <a class="nav-link active" aria-current="page" href="#">About Us</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link active premium" aria-current="page" href="#">Support Team </a>
+                        <a class="nav-link active premium" aria-current="page" href="{% url 'base' %}">Support Team </a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link active premium" aria-current="page" href="#">Counsellor </a>
@@ -123,12 +123,10 @@
                                 Comment
                             </button>
                         </div>
-                        <div class="save">
-                            <span class="like-number">{{ post.report }}</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-star" viewBox="0 0 16 16">
-                            <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                          </svg>
+                        <div class="report">
+                            <span class="report-number">{{ post.report }}</span>
+                            <img src="{% static 'img/flag.png' %}" class="report-icon" alt="report" style="width:px; height:32px;">
+
                         </div>
                     </div>
                     <div class="comment-section collapse" id="comment-collapsable{{ post.id }}">
@@ -169,14 +167,18 @@
 
         <div class="right-side-block">
                     <!-- Psycratic's profile -->
+            {% for expert_inst in experts %}
             <div class="card counsellor-card">
-                <img style="width: 100px; height: auto; margin: auto;" src="https://static.remove.bg/remove-bg-web/221525818b4ba04e9088d39cdcbd0c7bcdfb052e/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png" class="card-img-top" alt="...">
+                <img style="width: 100px; height: auto; margin: auto;" src="{% static 'img/{{ expert_inst.img }}' %}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h6 class="card-title">Dr. Goddata Prasad</h6>
-                    <span>Experties: Child Counsellor</span>
+                    <h6 class="card-title">{{expert_inst.name}}</h6>
+                    <span>Experties: {{expert_inst.field}}</span>
+                    <span>Experience: {{expert_inst.experience}}</span>
                     <br> <a href="#" class="btn btn-primary">Message</a>
                 </div>
-            </div> 
+            </div>
+            {% endfor %}
+
             <!-- premium template -->
             <div class="card my-2 premium-card">
                 <div class="prem-image">

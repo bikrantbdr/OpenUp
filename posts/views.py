@@ -32,7 +32,11 @@ def login(request):
     if request.method == "POST":
         Username = request.POST['username']
         Password=request.POST['password']
+
+        user_post = Post.objects.all()
+        experts = Expert.objects.all()
         user_detail = User.objects.all()
+
         print(user_detail[0].username)
         for user in user_detail:
             
@@ -41,8 +45,8 @@ def login(request):
                 #return render(request,'posts/home.html',{'user': user})
                 #set session:
                 request.session['username'] = user.username
-                user_post = Post.objects.all()
-                return render(request, 'posts/mainpage.html',{'user': user, 'user_post': user_post})
+                
+                return render(request, 'posts/mainpage.html',{'user': user, 'user_post': user_post,'experts':experts})
                 
                 
         # pop message wrong information message
@@ -78,17 +82,26 @@ def forgotpassword(request):
 
 
 def makepost(request):
-    if request.method=="POST4":
+    if request.method=="POST":
         username = request.session['username']  
         #username="random"
         title = request.POST['title']
         content = request.POST['post_content']
+        #print("makepost")
         
+        user_post = Post.objects.all()
+        experts = Expert.objects.all()
+        user_detail = User.objects.all()
+
+        for user in user_detail:
+            
+            if user.username == username:
+
         
-        Post.objects.create(author= username, title=title,content = content,support = 0,report=0, comments_json={'available':0})    
-            #message pop up already registered
-            #return render(request,'register.html')
-        return render(request,'posts/makepost.html')
+                Post.objects.create(author= username, title=title,content = content,support = 0,report=0, comments_json={'available':0})    
+                    #message pop up already registered
+                    #return render(request,'register.html')
+                return render(request,'posts/mainpage.html',{'user': user,'user_post': user_post,'experts':experts})
 
     
     else:
