@@ -56,9 +56,17 @@ class Disorder(models.Model):
     types = models.TextField(max_length=1500)
 
 
-   
+class Expert(models.Model):
+    name = models.CharField(max_length=30)
+    field = models.CharField(max_length=30)
+    experience = models.CharField(max_length=30)
+    img = models.CharField(max_length=50)
+    
 
-    def __str__(self):
+
+
+   
+def __str__(self):
         return self.username
 
 
