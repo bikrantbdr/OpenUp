@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+    crossorigin="anonymous"/>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	<title>Register</title>
+</head>
+<body>
+	<div class="row mt-6">
+		<div class="col-md-6 m-auto">
+			<div class="card card-body">
+				<h1 class="text-centre mb-3"><i class="fa fa-user-plus"></i> Register</h1>
+
 {% extends 'posts/index.html' %}
 
 {% block content %}
@@ -5,21 +27,32 @@
 <form action={% url 'login' %} method="POST">
 {% csrf_token %}
 
-    <p>First name: {{ form.first_name }}</p>
-    <p>First name:{{ form.middle_name }}
-    <p>First name:{{ form.last_name }}
-    <p>First name{{ form.address }}
-    <p>First name:{{ form.age }}
+    <p class="form-control">First name: {{ form.first_name }}</p>
+    <p class="form-control">Middle Name:{{ form.middle_name }}
+    <p class="form-control">Last Name:{{ form.last_name }}
+    <p class="form-control">Address :{{ form.address }}
+    <p class="form-control">Age:{{ form.age }}
     
-    <p>First name:{{ form.phone_number }}
-    <p>First name:{{ form.email }}
-        <p>First name:{{ form.username }}
-            <p>First name:{{ form.password }}
+    <p class="form-control">Phone Number:{{ form.phone_number }}
+    <p class="form-control">email:{{ form.email }}
+        <p class="form-control">username:{{ form.username }}
+            <p class="form-control">Password:{{ form.password }}
     
-                <input class="btn login_btn" type="submit" value="Login">
+                <input  type="submit" value="Login" class="btn btn-primary btn-block mb-2">
 
 </form>
 
 {{ form.errors }}
+<p >Have an account?<a href="./home.html" style="text-decoration: none;"
+    class="text-danger mt-4">login</a></p>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+
+
+
 
 {% endblock %}
