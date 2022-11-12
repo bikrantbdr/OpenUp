@@ -5,4 +5,5 @@ def index(request):
     return render(request, "ChatServer/index.html")
 
 def room(request, room_name):
-    return render(request, "ChatServer/room.html", {"room_name": room_name})
+    username=request.session['username']
+    return render(request, "ChatServer/room.html", {"room_name": room_name,'user_name':username})
